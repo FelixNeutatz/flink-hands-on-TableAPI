@@ -53,7 +53,7 @@ public class Tables {
 	
 		//DataSet<Row> result = tableEnv.toSet(movieAVG, Row.class);
 
-		//Utils.plot(result, 0, 1, true);
+		//Utils.plot(result, 0, 1, true, "Average movie rating", "Movies / TV shows", "Average Rating");
 	}
 	
 }

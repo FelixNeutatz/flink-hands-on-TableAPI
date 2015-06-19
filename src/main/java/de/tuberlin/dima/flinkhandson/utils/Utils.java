@@ -31,7 +31,7 @@ import java.util.List;
 
 public class Utils {
 	
-	public static void plot(DataSet<Row> row, int movieTitleColumnId, int doubleValueColumnId, boolean isSorted) throws Exception {
+	public static void plot(DataSet<Row> row, int movieTitleColumnId, int doubleValueColumnId, boolean isSorted, String chartTitle, String xAxisLabel, String yAxisLabel) throws Exception {
 		TupleTypeInfo type = new TupleTypeInfo<Tuple2<String,Double>>(BasicTypeInfo.STRING_TYPE_INFO, BasicTypeInfo.DOUBLE_TYPE_INFO);
 		List<Tuple2<String,Double>> list = row.map(new Mapper(movieTitleColumnId,doubleValueColumnId)).returns(type).collect();
 
@@ -39,6 +39,7 @@ public class Utils {
 		for (Tuple2<String,Double> tuple : list) {
 			map.put(tuple.f0,tuple.f1);
 		}
+		
 		
 		if (isSorted) {
 			ValueComparator bvc =  new ValueComparator(map);
@@ -49,9 +50,9 @@ public class Utils {
 			}
 			sorted_map.putAll(map);
 
-			new SingleSeriesBarChart("test", "movies", "measure", Color.RED, sorted_map);
+			new SingleSeriesBarChart(chartTitle, xAxisLabel, yAxisLabel, Color.RED, sorted_map);
 		} else {
-			new SingleSeriesBarChart("test", "movies", "measure", Color.RED, map);
+			new SingleSeriesBarChart(chartTitle, xAxisLabel, yAxisLabel, Color.RED, map);
 		}
 		
 		
