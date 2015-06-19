@@ -1,4 +1,4 @@
 target/*
 *.iml
 .idea/*
-/home/felix/flink-hands-on-TableAPI/src/main/java/de/tuberlin/dima/flinkhandson/tables/TablesSolution.java
+src/main/java/de/tuberlin/dima/flinkhandson/tables/TablesSolution.java

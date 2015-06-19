@@ -20,14 +20,21 @@ package de.tuberlin.dima.flinkhandson.tables;
 
 import de.tuberlin.dima.flinkhandson.Config;
 import de.tuberlin.dima.flinkhandson.utils.Utils;
+import org.apache.flink.api.common.functions.MapFunction;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.table.TableEnvironment;
+import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.api.java.tuple.Tuple3;
-import org.apache.flink.api.table.Row;
 import org.apache.flink.api.table.Table;
 
 public class Tables {
+
+	public static class MyResult {
+		public String title;
+		public Double averageRating;
+		public Integer userRatingCount;
+	}
 
 	public static void main(String[] args) throws Exception {
 		ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
@@ -47,13 +54,21 @@ public class Tables {
 
 		// IMPLEMENT THIS STEP
 
-		
-		
 
-	
-		//DataSet<Row> result = tableEnv.toSet(movieAVG, Row.class);
 
-		//Utils.plot(result, 0, 1, true, "Average movie rating", "Movies / TV shows", "Average Rating");
+
+
+		//DataSet<MyResult> result = tableEnv.toSet(movieAVG, MyResult.class); //get result in form of a POJO
+		//DataSet<Tuple2<String,Double>> resultTuples = result.map(new MyResult2Tuple()); //convert POJO to Tuple2
+
+		//Utils.plot(resultTuples, true, "Average movie rating", "Movies / TV shows", "Average Rating"); //plot a fancy chart :)
+	}
+
+	public static class MyResult2Tuple implements MapFunction<MyResult, Tuple2<String,Double>> {
+		@Override
+		public Tuple2<String,Double> map(MyResult in) {
+			return new Tuple2<String,Double>(in.title, in.averageRating);
+		}
 	}
 	
 }
