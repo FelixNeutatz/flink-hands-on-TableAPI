@@ -2,3 +2,4 @@ target/*
 *.iml
 .idea/*
 src/main/java/de/tuberlin/dima/flinkhandson/tables/TablesSolution.java
+src/main/java/de/tuberlin/dima/flinkhandson/tables/TablesSolutionGenre.java
