@@ -42,13 +42,13 @@ public class Tables {
 
 		DataSet<Tuple3<Integer, Integer, Double>> rating =
 				env.readCsvFile(Config.pathTo("rating.csv"))
-						.fieldDelimiter(',')
+						.fieldDelimiter(",")
 						.ignoreFirstLine() //ignore schema
 						.types(Integer.class, Integer.class, Double.class);
 
 		DataSet<Tuple3<Integer, String, String>> movie =
 				env.readCsvFile(Config.pathTo("movie.csv"))
-						.fieldDelimiter(',')
+						.fieldDelimiter(",")
 						.ignoreFirstLine() //ignore schema
 						.types(Integer.class, String.class, String.class);
 
