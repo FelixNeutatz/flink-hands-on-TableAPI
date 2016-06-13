@@ -55,10 +55,10 @@ public class Tables {
 		// IMPLEMENT THIS STEP
 
 
+		//Table movieAVG = ...;
 
 
-
-		//DataSet<MyResult> result = tableEnv.toSet(movieAVG, MyResult.class); //get result in form of a POJO
+		//DataSet<MyResult> result = tableEnv.toDataSet(movieAVG, MyResult.class); //get result in form of a POJO
 		//DataSet<Tuple2<String,Double>> resultTuples = result.map(new MyResult2Tuple()); //convert POJO to Tuple2
 
 		//Utils.plot(resultTuples, true, "Average movie rating", "Movies / TV shows", "Average Rating"); //plot a fancy chart :)
